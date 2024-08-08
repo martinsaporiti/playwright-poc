@@ -13,5 +13,5 @@ jobs:
         run: docker build -t my-playwright-tests .
 
       - name: run tests
-        run: docker run -it --rm -e ISSUER_API_UI_AUTH_USER=user-issuer -e ISSUER_API_UI_AUTH_PASSWORD=password-issuer my-playwright-tests npx playwright test
+        run: docker run --rm -e ISSUER_API_UI_AUTH_USER=user-issuer -e ISSUER_API_UI_AUTH_PASSWORD=password-issuer my-playwright-tests npx playwright test
         
