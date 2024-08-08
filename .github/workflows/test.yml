@@ -1,0 +1,17 @@
+name: Checks
+
+on: [push]
+
+jobs:
+  test:
+    name: Test codebase
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: build docker image 
+        run: docker build -t my-playwright-tests .
+
+      - name: run tests
+        run: docker run -it --rm -e ISSUER_API_UI_AUTH_USER=user-issuer -e ISSUER_API_UI_AUTH_PASSWORD=password-issuer my-playwright-tests npx playwright test
+        
