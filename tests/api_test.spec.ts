@@ -80,7 +80,7 @@ test.describe('API tests', () => {
                 "from": claimData.credentialSubject.id,
                 "typ": "application/iden3comm-plain-json",
                 "body": {
-                    "revocation_nonce": claimData.credentialStatus.revocationNonce,
+                    "revocation_nonce": 9999999,
                 }
             }
         });
