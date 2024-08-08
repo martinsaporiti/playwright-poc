@@ -71,7 +71,7 @@ test.describe('API tests', () => {
         expect(claim.ok()).toBeTruthy();
         expect((await claim.json()).credentialStatus.type).toBe('Iden3commRevocationStatusV1.0');
         var claimData = await claim.json();
-        const agent = await request.post(`/v1/agent`, {
+        const agent = await request.post(`/v1/agent2`, {
             data: {
                 "id": id,
                 "thid": id,
@@ -80,7 +80,7 @@ test.describe('API tests', () => {
                 "from": claimData.credentialSubject.id,
                 "typ": "application/iden3comm-plain-json",
                 "body": {
-                    "revocation_nonce": 9999999,
+                    "revocation_nonce": claimData.credentialStatus.revocationNonce,
                 }
             }
         });
